@@ -29,7 +29,7 @@ def RemoveFields(layer):
             index = 0
             for field in fields:
                 print(fieldNamesToRemove[i])
-                if field.name() == fieldNamesToRemove[0]:
+                if field.name() == fieldNamesToRemove[i]:
                     res = layer.dataProvider().deleteAttributes([index])
                     break
                 index += 1
