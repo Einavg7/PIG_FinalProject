@@ -4,6 +4,7 @@ import csv
 from datetime import datetime,timedelta
 from qgis.core import *
 import qgis.utils
+from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
 
 #############
 # Read the shapefile
@@ -25,7 +26,7 @@ inShape=iface.addVectorLayer(in_path,'demopoints','ogr')
 deleteFieldsIndex=[]
 for field in inShape.fields():
     fieldName=field.name()
-    if fieldName.startswith('Gender'):
+    if fieldName.startswith('Gender') or fieldName.startswith('Adj') :
         fieldIndex=inShape.fields().indexFromName(fieldName)
         deleteFieldsIndex.append(fieldIndex)
 #Read capabilities of shapefile
@@ -37,14 +38,18 @@ if caps&QgsVectorDataProvider.DeleteAttributes:
 #Update Attributes with gender
 if caps&QgsVectorDataProvider.AddAttributes:
     inShape.dataProvider().addAttributes([QgsField('Gender',QVariant.String)])
-    
+    inShape.dataProvider().addAttributes([QgsField('Adj_Date',QVariant.Date)])
+    inShape.dataProvider().addAttributes([QgsField('Adj_Hour',QVariant.Int)])
 # Get index of field to insert string
 insertIndex=inShape.fields().indexFromName('Gender')
 
-#Read tag and incorporate.
+#Read tag and incorporate.Shift the time by 19 hours, as we are using 19:00 hours as the start of origin
 with edit(inShape):
     for feature in inShape.getFeatures():
-        feature.setAttribute(insertIndex, gender.get(feature['tag_ident']))
+        feature.setAttribute(feature.fields().indexFromName('Gender'), gender.get(feature['tag_ident']))
+        regularTimeStamp=datetime.strptime(feature['timestamp'], '%Y-%m-%d %H:%M:%S')
+        adjustedTimeStamp=regularTimeStamp-timedelta(hours=19)
+        feature.setAttribute(inShape.fields().indexFromName('Adj_Date'),adjustedTimeStamp.strftime('%Y-%m-%d'))
+        feature.setAttribute(inShape.fields().indexFromName('Adj_Hour'),adjustedTimeStamp.hour)
         inShape.updateFeature(feature)
-        print (feature['timestamp'])
 inShape.updateFields()
