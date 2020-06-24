@@ -28,7 +28,9 @@ for field in inShape.fields():
     if fieldName.startswith('Gender'):
         fieldIndex=inShape.fields().indexFromName(fieldName)
         deleteFieldsIndex.append(fieldIndex)
-#delete existing time_str fields
+#Read capabilities of shapefile
+caps=inShape.dataProvider().capabilities()
+
 if caps&QgsVectorDataProvider.DeleteAttributes:
     inShape.dataProvider().deleteAttributes(deleteFieldsIndex)
     
@@ -39,10 +41,10 @@ if caps&QgsVectorDataProvider.AddAttributes:
 # Get index of field to insert string
 insertIndex=inShape.fields().indexFromName('Gender')
 
-#Read tag and update gender field with corresponding gender
+#Read tag and incorporate.
 with edit(inShape):
     for feature in inShape.getFeatures():
         feature.setAttribute(insertIndex, gender.get(feature['tag_ident']))
-        #print(feature.fieldNameIndex('Gender'),feature['tag_ident'])
         inShape.updateFeature(feature)
+        print (feature['timestamp'])
 inShape.updateFields()
