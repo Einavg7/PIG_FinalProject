@@ -67,7 +67,7 @@ def SortMovementDataByTime(layer, sortAttributeName):
             print(feature.id())
             for c in range(colCount):
                 print(feature_list[index][c])
-                feature.setAttributes([c,feature_list[index][c]])
+                layer.changeAttributeValue(index,c, feature_list[index][c])
                 layer.updateFeature(feature)
             index = index + 1
             print("\n")
