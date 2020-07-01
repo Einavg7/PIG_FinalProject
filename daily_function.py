@@ -60,6 +60,8 @@ def dailyDistanceTable(file_path, field, field2):
                 for key in output_dict.keys():
                     f.write("%s,%s\n"%(key, output_dict[key]))
 
+# dailyDistanceTable(path to shapefiles, field to calculate total distances, inidcates the gender of bird) 
+
 dailyDistanceTable("C:\\Users\\einav\\Dropbox\\summer semester 2020\\Python in GIS\\Final Project", 'distance', 'Gender')
 
 ##### issues #####
