@@ -6,8 +6,8 @@ import csv
 from datetime import datetime,timedelta
 import qgis.utils
 from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
-import random
 
+# currently not in use.. if we need later
 def sumField(layer, field):
     """  
     Parameters
