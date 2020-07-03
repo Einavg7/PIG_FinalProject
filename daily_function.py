@@ -35,6 +35,7 @@ def dailyDistanceTable(file_path, field, field2):
     ----------
     file_path (path): path to the directory of shapefiles
     field (String): Name of field to calculate sum from
+    field (String): Add Gender field to output
     Returns
     -------
     Table(csv)
