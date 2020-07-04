@@ -174,7 +174,7 @@ def AddConsecutiveDistances(layer):
     layer.commitChanges() 
     layer.updateFields()
 
-def hourlyDistanceTableShape(layer, group_field, sum_field):
+def hourlyDistanceTable(layer, group_field, sum_field):
     """
     Parameters
     ----------
