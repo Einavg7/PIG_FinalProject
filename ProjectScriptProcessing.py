@@ -247,7 +247,7 @@ def dailyDistanceTable(file_path, field, field2):
                     f.write("%s,%s\n"%(key, output_dict[key]))
     
     
-#------------------------Main Program------------------------------------
+#------------------------Main Program-------------------------------#
 layer = iface.activeLayer()
 if layer is None:
     print("Empty layer")
