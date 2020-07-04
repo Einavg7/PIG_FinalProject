@@ -104,6 +104,8 @@ def SortMovementDataByField(layer, sortAttributeName):
         print("\n")
     '''
     
+    
+    
 def CalculateDistanceBetweenConsecutivePoints(point1, point2):
     """
     Calculate distance between any given points
@@ -121,9 +123,10 @@ def CalculateDistanceBetweenConsecutivePoints(point1, point2):
     distance = distance.measureLine(point1, point2)
     return distance
     
+    
 def AddConsecutiveDistances(layer):
     """
-    Add a field for distances calculating distances between two consective points
+    Adding a field for consecutive distances by calculating distances between two consective points
     Parameters
     ----------
     layer(Vector) : :The layer to be preprocessed
@@ -167,45 +170,7 @@ def AddConsecutiveDistances(layer):
     layer.updateFields()
 
 
-#-------------------Main Program--------
-layer = iface.activeLayer()
-if layer is None:
-    print("Empty layer")
-else:
-    distanceList  = []
-    for feature in layer.getFeatures():
-        if feature.id() != 0 and feature.id() > 0 :
-            longCurrent = feature['long']
-            latCurrent = feature['lat']
-            pointCurrent = {"long" : longCurrent,"lat" : latCurrent}
-            
-            featureIDBefore = feature.id() - 1
-            featureBefore = FeatureByID(layer, featureIDBefore)
-            longBefore = featureBefore['long']
-            latBefore = featureBefore['lat']
-            pointBefore = {"long" : longBefore,"lat" : latBefore}
-            
-            distance = CalculateDistanceBetweenConsecutivePoints(pointCurrent,pointBefore)
-            distanceList.append(distance)
-        else:
-            distance = 0
-            distanceList.append(distance)
-            
-    caps=layer.dataProvider().capabilities()
-    fieldName = "ConsDist"
-    if caps&QgsVectorDataProvider.AddAttributes:
-        layer.dataProvider().addAttributes([QgsField(fieldName,  QVariant.Double)])
-   
-    layer.startEditing()
-    index = 0
-    for feature in layer.getFeatures():
-        feature[fieldName] = distanceList[index]
-        print(distanceList[index])
-        index = index + 1
-        layer.updateFeature(feature)
-        
-    layer.commitChanges() 
-    layer.updateFields()
+
     
     
 #------------------------Main Program------------------------------------
