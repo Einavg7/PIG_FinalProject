@@ -7,11 +7,10 @@ def CalculateDistanceBetweenConsecutivePoints(point1, point2):
     point1 = QgsPointXY(point1["long"],point1["lat"])
     point2 = QgsPointXY(point2["long"],point2["lat"])
     distance = QgsDistanceArea()
-    m = distance.measureLine(point1, point2)
-    return m
+    distance = distance.measureLine(point1, point2)
+    return distance
 
 def FeatureByID(layer, featureid):
-
     iterator = layer.getFeatures(QgsFeatureRequest(featureid))
     feature = QgsFeature()
     if iterator.nextFeature(feature):
@@ -36,29 +35,24 @@ else:
             latBefore = featureBefore['lat']
             pointBefore = {"long" : longBefore,"lat" : latBefore}
             
-            print(pointCurrent)
-            print(pointBefore)
-            print(feature.id(),)
             distance = CalculateDistanceBetweenConsecutivePoints(pointCurrent,pointBefore)
             distanceList.append(distance)
-            
         else:
-            print(feature.id())
             distance = 0
-            distanceList.append(feature.id(),distance)
+            distanceList.append(distance)
             
-        caps=layer.dataProvider().capabilities()
-        if caps&QgsVectorDataProvider.AddAttributes:
-            layer.dataProvider().addAttributes([QgsField('ConsecutiveDistance', QVariant.float)])
-            
-        layer.startEditing()
-            for feature in layer.Getfeatures():
-                feature.fields().indexFromName('ConsecutiveDistance',distanceList[feature.id()])
-                layer.updateFeature()
-        layer.commitChanges() 
-        layer.updateFiels()
-                
-            
-  
+    caps=layer.dataProvider().capabilities()
+    fieldName = "ConsDist"
+    if caps&QgsVectorDataProvider.AddAttributes:
+        layer.dataProvider().addAttributes([QgsField(fieldName,  QVariant.Double)])
+   
+    layer.startEditing()
+    index = 0
+    for feature in layer.getFeatures():
+        feature[fieldName] = distanceList[index]
+        print(distanceList[index])
+        index = index + 1
+        layer.updateFeature(feature)
         
-#SortMovementDataByTime(layer, "timestamp")
+    layer.commitChanges() 
+    layer.updateFields()
