@@ -1,13 +1,17 @@
 import csv
 from matplotlib import pyplot as plt
 import pandas as pd
+import os
 
-myfile = "C:\\Users\\einav\\Dropbox\\summer semester 2020\\Python in GIS\\Final Project\\dailyDistance.csv"
+#Set path to input file
+summaryFolder="C:\\Users\\DELL\\Documents\\GitHub\\Project\\PIG_FinalProject\\summaryCSVs"
+filename="dailyDistances.csv"
+myfile=os.path.join(summaryFolder,filename)
 
 df = pd.read_csv(myfile)
 
 ## add km column
-df['Distance_km'] = df.Distance / 1000
+df['Distance_km'] = df['Distance'] / 1000
 # print(df)
 
 
