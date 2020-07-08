@@ -17,8 +17,9 @@ df['Distance_km'] = df['Distance'] / 1000
 
 
 ## plot by gender
-ax = df.groupby('Gender')['Distance_km'].agg(lambda x: sum(x)).plot(kind='barh',title='Total distance traveled - Gender',
+ax = df.groupby('Gender')['Distance_km'].mean().plot(kind='barh',title='Average distance traveled - Gender',
                                                                     color=["b", "r"])
+## male: 10.2, female: 7.139
 ax.set_yticklabels(["Female", "Male"])
 ax.set_xlabel('Distance in Kilometers')
 plt.savefig('gender_dist.png', dpi=300, format='png')
@@ -26,15 +27,17 @@ plt.show()
 
 
 ## plot by season
-df.groupby('season')['Distance_km'].agg(lambda x: sum(x)).plot(kind='pie',
-                                                               title='Total distance traveled - Season')
+ax1 = df.groupby('season')['Distance_km'].mean().plot(kind='bar', title='Average distance traveled - Season',
+                                               color=['orange', 'green', 'yellow', 'cyan'] )
+ax1.set_ylabel('Distance in Kilometers')
+## summer : 8.689, autumn : 8.519, spring : 7.154, winter : 5.289
 plt.savefig('season_dist.png', dpi=300,format='png')
+plt.xticks(rotation=45)
 plt.show()
 
 ## plot by owl
-df.groupby('tag_ident')['Distance_km'].agg(lambda x: sum(x)).plot(kind='bar',
-                                                                  title='Total distance traveled by each Eagle Owl')
-plt.savefig('owl_dist.png', dpi=300,format='png')
-plt.show()
-
+##df.groupby('tag_ident')['Distance_km'].agg(lambda x: sum(x)).plot(kind='bar',
+##                                                                  title='Total distance traveled by each Eagle Owl')
+##plt.savefig('owl_dist.png', dpi=300,format='png')
+##plt.show()
 
