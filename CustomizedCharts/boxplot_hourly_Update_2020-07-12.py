@@ -20,10 +20,6 @@ get_hour={0:"00:00-01:00",1:"01:00-02:00",2:"02:00-03:00",3:"03:00-04:00",4:"04:
 data_to_plot=[]
 for hour in hours:
     data=dailyData[dailyData['Hour']==hour]['kilometers']
-    print (hour)
-    print ("#############################################################")
-    print(data)
-    print(type(data))
     data_to_plot.append(data)
 
 # Create a figure instance
