@@ -14,13 +14,13 @@ The following diagram describes the work flow developed for this analysis.
 
 Each of the following folders contains the .py code or the .png outputs according to the methodology diagram. 
 
-| Folder Name     | Description   | Comments  |
-| -------------   |-------------  | ------    |
-| Preprocessing   |               |      |
-| Inputs          |               |       |
-| Processing      |               |        |
-| Postprocessing  |               |           |
-| Outputs         |               |           |
+| Folder Name           | Description   | Comments  |
+| -------------         |-------------  | ------    |
+| Preprocessing         |               |      |
+| Inputs for Processing |               |       |
+| Processing            |               |        |
+| Postprocessing        |               |           |
+| Outputs               |               |           |
 
 
 
