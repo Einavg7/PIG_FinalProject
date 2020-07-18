@@ -26,5 +26,5 @@ Each of the following folders contains the .py code or the .png outputs accordin
 
 ---
 #### Python in GIS Final Project
-This analysis if part of the final project in the Python for GIS course, given at the summer semester at the Institute for Geoinformatics (IFGI). 
+This analysis if part of the final project in the Python for GIS course, given at the summer semester at the Institute for Geoinformatics (IFGI).  
 *The data used in this analysis is from Movebank Reinhard Vohwinkel et al.*
