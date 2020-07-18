@@ -1,7 +1,7 @@
 # Mobility Analysis of The Eurasian Eagle Owl 
 
 This code is for a mobility analysis of the Eurasian eagle owl using hourly and daily distances traveled. 
-The analysis was conducted by comparing gender and seasonal differences. 
+The analysis was conducted by evaluating gender differences and seasonal characteristics. 
 The data used for this analysis includes eagle owls that have been tracked in the area of North Rhine-Westphalia in Germany between the years 2011-2017. 
 
 ## Methodology
