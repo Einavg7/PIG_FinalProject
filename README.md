@@ -4,7 +4,7 @@ This code is for a mobility analysis of the eurasian eagle owl using hourly and 
 The analysis was conducted by comparing gender and seasonal differences. 
 The data used for this analysis includes eagle owls that have been tracked in the area of North Rhine-Westphalia in Germany between the years 2011-2017. 
 
-## Methodolgy
+## Methodology
 
 The following diagram describes the work flow developed for this analysis.
 
@@ -12,7 +12,7 @@ The following diagram describes the work flow developed for this analysis.
 
 ## Folders
 
-Each of the following folders contains the .py code or the .png outputs according to the methodolgy diagram. 
+Each of the following folders contains the .py code or the .png outputs according to the methodology diagram. 
 
 | Folder Name     | Description   | Comments  |
 | -------------   |-------------  | ------    |
