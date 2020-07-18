@@ -87,14 +87,6 @@ for key in legend_dict:
         patchList.append(data_key)
 ax.legend(handles=patchList, loc=2, ncol=2)
 
-## trend line with confidence bands
-x = mdates.date2num(days)
-z, t = np.polyfit(x, avg_dist, deg=1)
-#p = np.poly1d(z)
-y_est = z * x + t
-y_err = x.std() * np.sqrt(1/len(x) + (x-x.mean())**2 / np.sum((x-x.mean())**2)) 
-ax.plot(x, y_est, '-', c='k', linewidth=2)
-ax.fill_between(x, y_est - y_err, y_est + y_err, alpha=0.2)
 
 plt.xticks(rotation = 45)
 #plt.savefig('daily_avg_dist.png', dpi=300, format='png')
