@@ -16,9 +16,9 @@ Each of the following folders contains the .py code or the .png outputs accordin
 
 | Folder Name           | Description  | 
 | -------------         |------------- | 
-| 1Codes         |Includes three folder with codes for preprocessing, processing and postprocessing               |      |
-| 2Outputs |Includes three folders with the outputs for preprocessing, processing and postprocessing               |       |
-| 3DataSource            |Data should be kept here. It is blank due to copyright issues               |        |
+| Codes         |Includes three folder with codes for preprocessing, processing and postprocessing               |      |
+| Outputs |Includes three folders with the outputs for preprocessing, processing and postprocessing               |       |
+| DataSource            |Data should be kept here. It is blank due to copyright issues               |        |
 
 
 
