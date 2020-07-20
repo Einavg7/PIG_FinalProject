@@ -16,11 +16,11 @@ Each of the following folders contains the .py code or the .png outputs accordin
 
 | Folder Name           | Description   | Comments  |
 | -------------         |-------------  | ------    |
-| Preprocessing         |               |      |
-| Inputs for Processing |               |       |
-| Processing            |               |        |
-| Postprocessing        |               |           |
-| Outputs               |   Includes all the figures plotted in .png format            |           |
+| Preprocessing         |Includes the codes for preprocessing (upto data interpolation)               |      |
+| Inputs for Processing |Includes the csv files generated after preprocessing               |       |
+| Processing            |Includes the codes for processing (Categorical distance computation)               |        |
+| Postprocessing        |Includes the codes for visualization               |           |
+| Outputs               |Includes all the figures plotted in .png format            |           |
 
 
 
