@@ -14,13 +14,11 @@ The following diagram describes the work flow developed for this analysis.
 
 Each of the following folders contains the .py code or the .png outputs according to the methodology diagram. 
 
-| Folder Name           | Description   | Comments  |
-| -------------         |-------------  | ------    |
-| Preprocessing         |Includes the codes for preprocessing (upto data interpolation)               |      |
-| Inputs for Processing |Includes the csv files generated after preprocessing               |       |
-| Processing            |Includes the codes for processing (Categorical distance computation)               |        |
-| Postprocessing        |Includes the codes for visualization               |           |
-| Outputs               |Includes all the figures plotted in .png format            |           |
+| Folder Name           | Description  | 
+| -------------         |------------- | 
+| 1Codes         |Includes three folder with codes for preprocessing, processing and postprocessing               |      |
+| 2Outputs |Includes three folders with the outputs for preprocessing, processing and postprocessing               |       |
+| 3DataSource            |Data should be kept here. It is blank due to copyright issues               |        |
 
 
 
@@ -28,6 +26,6 @@ Each of the following folders contains the .py code or the .png outputs accordin
 #### Python in GIS Final Project
 This analysis is part of the final project in the Python for GIS course, given at the summer semester at the Institute for Geoinformatics (IFGI).  
 
-*The data used in this analysis is from Movebank Reinhard Vohwinkel et al.*
+*“The datasets generated during and/or analyzed during the current study are not publicly available due to copyright but are stored at Movebank (www.movebank.org) in the study “Eagle owl Reinhard Vohwinkel MPIO” (Movebank study ID 3780829) and can be made available by the author upon reasonable request.”*
 
 License MIT
