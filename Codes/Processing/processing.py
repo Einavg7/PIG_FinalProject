@@ -2,6 +2,7 @@ import math
 import pandas as pd
 import os
 from datetime import datetime, timedelta
+import csv
 
 def OpenFile(filePath):
     """
@@ -292,7 +293,10 @@ def GetHourlySummary(inFolder,timestampField,hourlySummaryFields):
     hourlysummaryTable(pandas dataframe): dataframe with distance summarized on hourly basis
 
     """
-    hourlysummaryTable=pd.DataFrame(columns=hourlySummaryFields)
+    hourlysummaryCSV=os.path.join(inFolder,"../Processing/hourlySummary.csv")
+    with open(hourlysummaryCSV,'a') as file:
+        writer=csv.writer(file)
+        writer.writerow(hourlySummaryFields)
     for file in os.listdir(inFolder):
         if file.endswith(".shp"):
             fullPath=os.path.join(inFolder,file)
@@ -300,9 +304,8 @@ def GetHourlySummary(inFolder,timestampField,hourlySummaryFields):
             df=makeDataFrame(layer)
             interpolatedData=interpolate(df,timestampField,['utm_east',"utm_north","lat","long"])
             hourlyDist=hourlyDistance(interpolatedData,timestampField,hourlySummaryFields)
-            hourlysummaryTable=hourlysummaryTable.append(hourlyDist)
-    return hourlysummaryTable
-
+            hourlyDist.to_csv(hourlysummaryCSV,mode='a', index=False, header=False) 
+            
 def GetDailySummary(inFolder,timestampField,dailySummaryFields):
     """
     Gets the daily summary from birdwise data stored in a folder
@@ -319,15 +322,17 @@ def GetDailySummary(inFolder,timestampField,dailySummaryFields):
         DESCRIPTION.
 
     """
-    dailysummaryTable=pd.DataFrame(columns=dailySummaryFields)
+    dailysummaryCSV=os.path.join(inFolder,"../Processing/dailySummary.csv")
+    with open(dailysummaryCSV,'a') as file:
+        writer=csv.writer(file)
+        writer.writerow(dailySummaryFields)
     for file in os.listdir(inFolder):
         if file.endswith(".shp"):
             fullPath=os.path.join(inFolder,file)
             layer=OpenFile(fullPath)
             df=makeDataFrame(layer)
             dailyDist=dailyDistance(df,timestampField,dailySummaryFields)
-            dailysummaryTable=dailysummaryTable.append(dailyDist)
-    return dailysummaryTable
+            dailyDist.to_csv(dailysummaryCSV,mode='a', index=False, header=False)
 
 #Main Application
 #Set project, input and output directory
@@ -339,9 +344,7 @@ csvDirectory=os.path.join(projectDirectory,"Outputs/Processing")
 dailySummaryFields=["tag_ident","Gender","date","season","day-month","distance"]
 hourlySummaryFields=["tag_ident","Gender","date","hour","season","day-month","distance"]
 
-#hourly=GetHourlySummary(tagwiseFolder, "timestamp", hourlySummaryFields)
+hourly=GetHourlySummary(tagwiseFolder, "timestamp", hourlySummaryFields)
 daily=GetDailySummary(tagwiseFolder,'mod_time',dailySummaryFields)
 
-#export results as csv to designated folder
-#hourly.export(os.path.join(csvDirectory,"hourlySummary.csv"))
-daily.export(os.path.join(csvDirectory,"dailySummary.csv"))
+
