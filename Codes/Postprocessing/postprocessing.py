@@ -1,8 +1,4 @@
 import os
-import qgis
-from qgis.core import (
-    QgsVectorLayer
-)
 import csv
 import numpy as np
 from matplotlib import pyplot as plt
@@ -12,15 +8,11 @@ import matplotlib.dates as mdates
 from math import floor
 
 #Set project, input and output directory
-#projectDirectory="C:\\Users\\DELL\\Documents\\GitHub\\Project\\PIG_FinalProject"
-#inputCSV_daily=os.path.join(projectDirectory, "Outputs/Processing/dailySummary.csv")
-#inputCSV_hourly=os.path.join(projectDirectory, "Outputs/Processing/hourlySummary.csv")
-#outputPath=os.path.join(projectDirectory, "Outputs/Postprocessing")
+projectDirectory="C:\\Users\\DELL\\Documents\\GitHub\\Project\\PIG_FinalProject"
+inputCSV_daily=os.path.join(projectDirectory, "Outputs/Processing/dailySummary.csv")
+inputCSV_hourly=os.path.join(projectDirectory, "Outputs/Processing/hourlySummary.csv")
+outputPath=os.path.join(projectDirectory, "Outputs/Postprocessing")
 
-
-inputCSV_hourly = "C:\\Users\\einav\\Dropbox\\summer semester 2020\\Python in GIS\\Final Project\\hourlySummary.csv"
-inputCSV_daily="C:\\Users\\einav\\Dropbox\\summer semester 2020\\Python in GIS\\Final Project\\dailySummary.csv"
-outputPath = "C:\\Users\\einav\\Dropbox\\summer semester 2020\\Python in GIS\\Final Project"
 
 #Open csv file
 hourlyData=pd.read_csv(inputCSV_hourly)
