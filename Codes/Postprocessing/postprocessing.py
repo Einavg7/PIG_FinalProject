@@ -477,11 +477,11 @@ figp.suptitle('Seasonal Variation of Average Hourly Distance(km)\n Travelled by 
 plt.savefig(os.path.join(outputPath,"polar_hour_season.png"), dpi=600, format='png')
 plt.show()
 
-""" Creates 2 plots for distance travelled for owl tags = 1753, 3893, 3896, 3897, females and males """
+""" Creates plots for distance travelled for owl tags = 1753, 3893 """
 df = dailyData
 df['date'] = pd.to_datetime(df['date'], format='%m/%d/%Y')
 fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(12, 10))
-fig.suptitle('Daily Distance Traveled - \nFemale Eagle Owls 1753 & 3897', fontsize=24)
+fig.suptitle('Daily Distance Traveled - \nFemale Eagle Owls 1753 & 3893', fontsize=24)
 
 ax1 = df[df.tag_ident == 1753].plot(x = 'date', y = 'kilometers', color = 'cyan',
   ax=axes[0])
@@ -491,44 +491,17 @@ ax1.set_xlabel('')
 ax1.set_ylabel('Distance (km)')
 ax1.xaxis.set_major_formatter(mdates.DateFormatter('%d/%m/%Y'))
 
-ax2 = df[df.tag_ident == 3897].plot(x = 'date', y = 'kilometers', color = 'navy', 
+ax2 = df[df.tag_ident == 3893].plot(x = 'date', y = 'kilometers', color = 'purple', 
         ax=axes[1])
 L2=ax2.legend()
-L2.get_texts()[0].set_text('Owl 3897')
+L2.get_texts()[0].set_text('Owl 3893')
 ax2.set_xlabel('Date')
 ax2.set_ylabel('Distance (km)')
-ax2.xaxis.set_major_formatter(mdates.DateFormatter('%d/%m/%Y'))
+months2 = mdates.MonthLocator()
+ax2.xaxis.set_major_locator(months2)
+ax2.xaxis.set_major_formatter(mdates.DateFormatter('%d/%m'))
 
 plt.savefig(os.path.join(outputPath,"female_birds_dailydist.png"), dpi=600, format='png')
 plt.show()
 
 
-
-fig2, axes2 = plt.subplots(nrows=2, ncols=1, figsize=(12, 10))
-fig2.suptitle('Daily Distance Traveled - \nMale Eagle Owls 3893 & 3896 in 2014', fontsize=24)
-
-ax3 = df[df.tag_ident == 3893].plot(x = 'date', y = 'kilometers',
-        color='purple', ax=axes2[0])
-L3=ax3.legend()
-L3.get_texts()[0].set_text('Owl 3893')
-ax3.set_xlabel('')
-ax3.set_ylabel('Distance (km)')
-months3 = mdates.MonthLocator()
-ax3.xaxis.set_major_locator(months3)
-ax3.xaxis.set_major_formatter(mdates.DateFormatter('%d/%m'))
-
-
-ax4 = df[df.tag_ident == 3896].plot(x = 'date', y = 'kilometers',
-        color='magenta', ax=axes2[1])
-L4=ax4.legend()
-L4.get_texts()[0].set_text('Owl 3896')
-ax4.set_xlabel('Date')
-ax4.set_ylabel('Distance (km)')
-months4 = mdates.MonthLocator()
-ax4.xaxis.set_major_locator(months4)
-ax4.xaxis.set_major_formatter(mdates.DateFormatter('%d/%m'))
-
-#save fig
-plt.savefig(os.path.join(outputPath,"male_birds_dailydist.png"), dpi=600, format='png')
-
-plt.show()
