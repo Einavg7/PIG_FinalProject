@@ -26,6 +26,9 @@ Each of the following folders contains the .py code or the .png outputs accordin
 #### Python in GIS Final Project
 This analysis is part of the final project in the Python for GIS course, given at the summer semester at the Institute for Geoinformatics (IFGI).  
 
+##### Reference
+Reinhard Vohwinkel et al. in prep. Movebank: Eagle owl Reinhard Vohwinkel MPIO. http://www.movebank.org, accessed on 10 June 2020.
+
 *“The datasets generated during and/or analyzed during the current study are not publicly available due to copyright but are stored at Movebank (www.movebank.org) in the study “Eagle owl Reinhard Vohwinkel MPIO” (Movebank study ID 3780829) and can be made available by the author upon reasonable request.”*
 
-License MIT
+CC0-1.0 License 
